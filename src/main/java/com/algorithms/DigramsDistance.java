@@ -1,4 +1,4 @@
-package com.xceder.algorithms;
+package com.algorithms;
 
 import java.util.ArrayList;
 import java.util.List;

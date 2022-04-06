@@ -1,23 +1,21 @@
-package com.xceder.algorithms;
+package com.algorithms;
 
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Nullable;
 
 public class Digrams {
-  public @Nullable
-  DigramsDistance maxSameDigramsDistance(String content) {
+  public static DigramsDistance maxSameDigramsDistance(String content) {
     DigramsDistance maxDistance = new DigramsDistance("");
     Map<String, DigramsDistance> distanceMap = new HashMap<>();
 
     int[] indexAry = new int[2];
 
-    for (int forwardIndex = 0, backwardIndex = content.length() - 2;
-         forwardIndex <= backwardIndex;
-         forwardIndex++, backwardIndex--) {
+    for (int leftIndex = 0, rightIndex = content.length() - 2;
+         leftIndex <= rightIndex;
+         leftIndex++, rightIndex--) {
 
-      indexAry[0] = forwardIndex;
-      indexAry[1] = forwardIndex == backwardIndex ? -1 : backwardIndex;
+      indexAry[0] = leftIndex;
+      indexAry[1] = leftIndex == rightIndex ? -1 : rightIndex;
 
       DigramsDistance distance = null;
       for (var index : indexAry) {
@@ -39,9 +37,9 @@ public class Digrams {
     return maxDistance;
   }
 
-  private DigramsDistance addDistance(int position,
-                                      String digrams,
-                                      Map<String, DigramsDistance> distanceMap) {
+  private static DigramsDistance addDistance(int position,
+                                             String digrams,
+                                             Map<String, DigramsDistance> distanceMap) {
     var distance = distanceMap.get(digrams);
 
     if (distance == null) {

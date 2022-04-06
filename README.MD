@@ -1,13 +1,15 @@
 ## Build
+
 run gradle build task
 
 ## Test Reports
+
 1. test report
-         
+
        open build/reports/tests/test/index.html            
 
 2. cucumber report
-     
+
        open build/reports/tests/cucumber.html
 
 3. coverage report
@@ -42,13 +44,13 @@ Write an efficient algorithm for the following assumptions:
 
 ### Solution
 
-1. tokenize the string forward/backward at the same time
+1. tokenize the string from left/right side at the same time
 2. use hash map to capture the existence
 3. for duplicate elements, calculate the distance
 
 ### Implementation
 
-[DigramsDistance maxDistance(String content)](./src/main/java/com/xceder/algorithms/Digrams.java)
+[DigramsDistance::maxDistance(String content)](./src/main/java/com/xceder/algorithms/Digrams.java)
 
 ## Qn2:
 
@@ -65,7 +67,7 @@ exist then the function should return (0].
 
 Examples:
 
-1. Given A = [3, 2, 4, 31], F = 2, M = 4, your function should return [6, 6]. The arithmetic mean of all the rolls is (3
+1. Given A = [3, 2, 4, 3], F = 2, M = 4, your function should return [6, 6]. The arithmetic mean of all the rolls is (3
     + 2 + 4 + 3 + 6 + 6) / 6 = 24 / 6 = 4.
 2. Given A = [1, 5, 6], F = 4, M = 3, your function may return [2, 1, 2, 4] or [6, 1,1, 1] (among others).
 3. Given A = [1, 2, 3, 4], F = 4, M = 6, your function should return [0]. It is not possible to obtain such a mean.
@@ -78,6 +80,14 @@ Write an efficient algorithm for the following assumptions:
 * M is an integer within [1, 6]
 
 ### Solution
+
+1. this is sum set problem. calculate the sum based on the parameter A,M
+2. return all possible combination for the F roll sum
+3. the allowed values is 1-6 for dice
+
+### Implementation
+
+[Arithmetic::findSumSetForMean(int[] partialValueAry, int missingValueCount, int mean, int[] allowedValues) ](./src/main/java/com/xceder/algorithms/Arithmetic.java)
 
 ## Qn 3:
 
@@ -123,3 +133,11 @@ Write an efficient algorithm for the following assumptions:
 * each element of array A is an
 
 ### Solution
+
+1. locate the non decreasing range from left/right side
+2. for non-empty range (removed), verify the left/right side segment elements to ensure they are in non-decreasing order
+3. return the min value as result
+
+### Implementation
+
+[Sorter::findShortestSubsequence(int[] array)](./src/main/java/com/xceder/algorithms/Sorter.java)

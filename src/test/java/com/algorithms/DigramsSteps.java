@@ -1,5 +1,7 @@
-package com.xceder.algorithms;
+package com.algorithms;
 
+import com.algorithms.Digrams;
+import com.algorithms.DigramsDistance;
 import io.cucumber.guice.ScenarioScoped;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
 
 @ScenarioScoped
 public class DigramsSteps {
-  private final Digrams digramsOperator = new Digrams();
   private transient String text;
 
   @When("the string is {string}")
@@ -21,23 +22,16 @@ public class DigramsSteps {
                                                                   int distance,
                                                                   String positions) {
 
-    var result = digramsOperator.maxSameDigramsDistance(text);
+    var result = Digrams.maxSameDigramsDistance(text);
 
-    if (digrams == null) {
-      Assertions.assertNull(result);
-    } else {
-      Assertions.assertNotNull(result);
+    DigramsDistance expected = new DigramsDistance(digrams);
 
-      DigramsDistance expected = new DigramsDistance(digrams);
-
-      if (!positions.isBlank()) {
-        expected.getOccurrenceIndexList()
-            .addAll(Arrays.stream(positions.split(",")).map(Integer::parseInt).toList());
-      }
-
-      Assertions.assertEquals(expected, result);
-      Assertions.assertEquals(distance, result.maxDistance());
+    if (!positions.isBlank()) {
+      expected.getOccurrenceIndexList()
+          .addAll(Arrays.stream(positions.split(",")).map(Integer::parseInt).toList());
     }
 
+    Assertions.assertEquals(expected, result);
+    Assertions.assertEquals(distance, result.maxDistance());
   }
 }
