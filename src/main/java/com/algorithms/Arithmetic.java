@@ -2,11 +2,12 @@ package com.algorithms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Arithmetic {
   /**
+   * calculate the sum set for the specified mean value.
+   *
    * @param partialValueAry       existing value array
    * @param missingValueCount     length for the return array
    * @param mean                  total sum/ total count

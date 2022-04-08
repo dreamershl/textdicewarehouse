@@ -9,8 +9,8 @@ import org.junit.platform.suite.api.SelectClasspathResource;
 import org.junit.platform.suite.api.Suite;
 
 @Suite
-@SelectClasspathResource("com/xceder")
-@IncludeTags("Sum")
+@SelectClasspathResource("com/algorithms")
+@IncludeTags("MealBills")
 public class RunCucumberTests implements InjectorSource {
   private final Injector injector = Guice.createInjector(CucumberModules.createScenarioModule());
 
